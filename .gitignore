@@ -1,0 +1,8 @@
+# Created by .ignore support plugin (hsz.mobi)
+.DS_Store
+.gitignore
+.idea/workspace.xml
+output/
+src/main/resources/
+src/test/
+target/
