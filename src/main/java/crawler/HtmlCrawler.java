@@ -47,7 +47,7 @@ public class HtmlCrawler implements Runnable {
                     throw new Exception("该路径错误");
                 }else{//是目录
                     URL url = new URL(this.url);
-                    String newPath = url.getHost().replace(".","_") + ".html";
+                    String newPath = file.getPath() +"/"+ url.getHost().replace(".","_") + ".html";
                     file = new File(newPath);
                 }
             }

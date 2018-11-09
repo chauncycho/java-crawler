@@ -6,3 +6,4 @@ output/
 src/main/resources/
 src/test/
 target/
+*.html
