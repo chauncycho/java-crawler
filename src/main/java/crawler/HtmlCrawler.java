@@ -19,7 +19,7 @@ public class HtmlCrawler implements Runnable {
     private String htmlSource = null;
 
     public void run() {
-
+        this.write("./output");
     }
 
     public HtmlCrawler(String url){
@@ -89,7 +89,7 @@ public class HtmlCrawler implements Runnable {
             while((length = bis.read(bytes)) != -1 ){
                 sb.append(new String(bytes,0,length,"utf-8"));
             }
-            System.out.println(sb.toString());
+//            System.out.println(sb.toString());
 
             htmlSource = sb.toString();//存入变量
 
