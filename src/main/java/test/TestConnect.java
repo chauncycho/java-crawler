@@ -5,6 +5,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
+/**
+ * 连接测试
+ */
 public class TestConnect {
     /**
      * 发送请求获取静态网页
