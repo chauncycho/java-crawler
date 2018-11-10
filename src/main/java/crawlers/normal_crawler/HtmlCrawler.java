@@ -1,6 +1,7 @@
 package crawlers.normal_crawler;
 
 import crawlers.Crawler;
+import crawlers.Utils;
 
 import java.io.*;
 import java.net.MalformedURLException;
@@ -38,21 +39,7 @@ public class HtmlCrawler implements Runnable, Crawler {
 
     public void write(String path){
         try {
-            File file = new File(path);
-            //判断文件是否存在，不存在则创建
-            if (!file.exists()){
-                file.createNewFile();
-            }
-
-            if (!file.isFile()){//不是文件
-                if (!file.isDirectory()) {//不是目录
-                    throw new Exception("该路径错误");
-                }else{//是目录
-                    URL url = new URL(this.url);
-                    String newPath = file.getPath() +"/"+ url.getHost().replace(".","_") + ".html";
-                    file = new File(newPath);
-                }
-            }
+            File file = Utils.getFile(path,new URL(url));
 
             if (htmlSource != null) {//文件已爬取过
                 write(file, htmlSource);
@@ -110,21 +97,7 @@ public class HtmlCrawler implements Runnable, Crawler {
      * @param targetFile 文件写入位置
      */
     private void write(File targetFile, String source){
-        try {
-            //缓冲输出流
-            BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(targetFile));
-
-            //写文件
-            bos.write(source.getBytes("utf-8"));
-
-            //关闭流
-            bos.flush();
-            bos.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Utils.write(targetFile,source);
     }
 
     /**

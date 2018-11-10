@@ -1,6 +1,7 @@
 package crawlers.jsoup_crawler;
 
 import crawlers.Crawler;
+import crawlers.Utils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
@@ -57,7 +58,7 @@ public class HtmlCrawler implements Runnable, Crawler {
             Utils.setProxy();// 换代理ip
             System.out.println(connectCount++);
 
-            if(connectCount > 10){//如果死活连接不上，就放弃
+            if(connectCount > 20){//如果死活连接不上，就放弃
                 return null;
             }
 
@@ -70,69 +71,24 @@ public class HtmlCrawler implements Runnable, Crawler {
      * @param path 文件路径
      */
     public void write(String path){
-        File file = getFile(path);
-        if (document == null){//还没爬取过
-            getDocument();
-        }
-        Document document = this.document;
-
         //写文件
         try {
-            BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file));
-            bos.write(document.toString().getBytes("utf-8"));
-            bos.flush();
-            bos.close();
+            File file = Utils.getFile(path,new URL(url));
+            if (document == null){//还没爬取过
+                getDocument();
+            }
+            Document document = this.document;
+
+            Utils.write(file,document.toString());
         } catch (NullPointerException e){
             System.out.println("连接失败");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    /**
-     * 获得文件
-     * 文件不存在则创建，目录不存在则创建
-     * 如果是目录，则创建一个以域名为名的文件
-     * @param path 文件路径
-     * @return
-     */
-    private File getFile(String path){
-        File file = new File(path);
-        file = new File(file.getPath());//转换成绝对路径
-        try {
 
-            boolean isFile = file.getName().contains(".");//判断是文件还是文件夹
 
-            if(!file.exists() && isFile){//不存在，同时是文件
-                File parentFile = file.getParentFile();
-                if (!parentFile.exists()){//父文件不存在
-                    parentFile.mkdirs();//创建
-                }
-                file.createNewFile();
-            }
-
-            if(!isFile){//是文件夹
-                URL url = new URL(this.url);
-                if (!file.exists()){//不存在
-                    file.mkdirs();//创建
-                }
-
-                //时间戳
-                SimpleDateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
-                String timeStamp = format.format(new Date());
-
-                file = new File(file.getPath()+"/"+url.getHost().replace(".","_")+timeStamp+".html");
-                file.createNewFile();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return file;
-    }
 
     public static void main(String[] args) {
         HtmlCrawler htmlCrawler = new HtmlCrawler("https://movie.douban.com/");
