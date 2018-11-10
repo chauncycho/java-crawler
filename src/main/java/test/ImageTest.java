@@ -4,7 +4,7 @@ import crawler.HtmlCrawler;
 
 public class ImageTest {
     public static void main(String[] args) {
-        HtmlCrawler htmlCrawler = new HtmlCrawler("http://img17.3lian.com/d/file/201701/23/957c2d2610210dfa0fe087790530a8dd.jpg");
-        htmlCrawler.write("./image1.jpg");
+        HtmlCrawler htmlCrawler = new HtmlCrawler("https://www.zhihu.com/people/yao-cheng-46/");
+        htmlCrawler.write("./output");
     }
 }
