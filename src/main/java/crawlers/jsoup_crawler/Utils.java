@@ -1,4 +1,4 @@
-package jsoup.crawler;
+package crawlers.jsoup_crawler;
 
 import java.io.*;
 import java.util.List;

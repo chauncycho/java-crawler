@@ -1,4 +1,6 @@
-package crawler;
+package crawlers.normal_crawler;
+
+import crawlers.Crawler;
 
 import java.io.*;
 import java.net.MalformedURLException;
@@ -14,7 +16,7 @@ import java.net.URLConnection;
  * 本爬虫只可爬取静态HTML页面
  */
 
-public class HtmlCrawler implements Runnable {
+public class HtmlCrawler implements Runnable, Crawler {
     private String url;
     private String htmlSource = null;
 

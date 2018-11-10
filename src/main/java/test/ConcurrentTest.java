@@ -1,5 +1,7 @@
 package test;
 
+import crawlers.jsoup_crawler.HtmlCrawler;
+
 /**
  * 并发测试
  */
@@ -33,7 +35,7 @@ public class ConcurrentTest {
         while(index < urls.length){
             if(Thread.activeCount() < 10) {//限制10个线程
                 System.out.println("正在爬取第"+(index+1)+"个网站");
-                Thread thread = new Thread(new jsoup.crawler.HtmlCrawler(urls[index++]));
+                Thread thread = new Thread(new HtmlCrawler(urls[index++]));
                 thread.start();
             }
         }

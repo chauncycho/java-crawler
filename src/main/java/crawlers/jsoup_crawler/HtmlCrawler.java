@@ -1,5 +1,6 @@
-package jsoup.crawler;
+package crawlers.jsoup_crawler;
 
+import crawlers.Crawler;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
@@ -8,7 +9,7 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class HtmlCrawler implements Runnable {
+public class HtmlCrawler implements Runnable, Crawler {
     private String url = null;//网页路径
     private Document document = null;//网页文件
     private int connectCount = 0;//连接次数
@@ -64,6 +65,10 @@ public class HtmlCrawler implements Runnable {
         }
     }
 
+    /**
+     * 写入文件
+     * @param path 文件路径
+     */
     public void write(String path){
         File file = getFile(path);
         if (document == null){//还没爬取过
@@ -130,7 +135,7 @@ public class HtmlCrawler implements Runnable {
     }
 
     public static void main(String[] args) {
-        HtmlCrawler htmlCrawler = new HtmlCrawler("https://www.zhihu.com/question/22913650");
+        HtmlCrawler htmlCrawler = new HtmlCrawler("https://movie.douban.com/");
         htmlCrawler.write("./output/");
     }
 

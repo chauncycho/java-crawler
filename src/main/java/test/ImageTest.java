@@ -1,6 +1,6 @@
 package test;
 
-import crawler.HtmlCrawler;
+import crawlers.normal_crawler.HtmlCrawler;
 
 public class ImageTest {
     public static void main(String[] args) {
