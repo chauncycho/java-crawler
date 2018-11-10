@@ -1,6 +1,6 @@
 package test;
 
-import crawlers.jsoup_crawler.HtmlCrawler;
+import crawlers.selenium_crawler.HtmlCrawler;
 
 /**
  * 并发测试
