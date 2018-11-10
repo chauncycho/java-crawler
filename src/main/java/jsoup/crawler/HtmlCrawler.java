@@ -1,4 +1,4 @@
-package dynamic.crawler;
+package jsoup.crawler;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -7,7 +7,6 @@ import java.io.*;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 public class HtmlCrawler implements Runnable {
     private String url = null;//网页路径
@@ -131,8 +130,8 @@ public class HtmlCrawler implements Runnable {
     }
 
     public static void main(String[] args) {
-        HtmlCrawler htmlCrawler = new HtmlCrawler("https://www.zhihu.com/topics");
-        htmlCrawler.write("./output/lalal.html");
+        HtmlCrawler htmlCrawler = new HtmlCrawler("https://www.zhihu.com/question/22913650");
+        htmlCrawler.write("./output/");
     }
 
 }

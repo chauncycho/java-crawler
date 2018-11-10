@@ -1,4 +1,4 @@
-package dynamic.crawler;
+package jsoup.crawler;
 
 import java.io.*;
 import java.util.List;
