@@ -10,4 +10,7 @@ Description：
      3.使用write方法，传入输出路径，即可输出一个网页源文件
 
 文件位置：
+java原生api爬虫：
 https://github.com/chauncycho/java-crawler/tree/master/src/main/java/crawler
+jsoup爬虫
+https://github.com/chauncycho/java-crawler/tree/master/src/main/java/jsoup/crawler
