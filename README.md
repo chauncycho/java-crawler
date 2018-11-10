@@ -11,8 +11,6 @@ Description：
 
 文件位置：
 
-* java原生api爬虫：
-* https://github.com/chauncycho/java-crawler/tree/master/src/main/java/crawler
+* java原生api爬虫：https://github.com/chauncycho/java-crawler/tree/master/src/main/java/crawler
 
-* jsoup爬虫
-* https://github.com/chauncycho/java-crawler/tree/master/src/main/java/jsoup/crawler
+* jsoup爬虫：https://github.com/chauncycho/java-crawler/tree/master/src/main/java/jsoup/crawler
