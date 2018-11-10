@@ -129,7 +129,7 @@ public class HtmlCrawler implements Runnable {
      * 示例
      */
     public static void main(String[] args){
-        HtmlCrawler hc = new HtmlCrawler("https://www.hao123.com/");
+        HtmlCrawler hc = new HtmlCrawler("https://www.zhihu.com/topics");
         hc.write("./output");
     }
 }

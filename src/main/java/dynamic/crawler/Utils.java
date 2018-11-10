@@ -16,6 +16,7 @@ public class Utils {
             String host = ipSplited[0];
             String port = ipSplited[1];
 
+            System.setProperty("http.maxRedirects", "50");
             System.getProperties().setProperty("proxySet", "true");
             System.getProperties().setProperty("http.proxyHost", host);
             System.getProperties().setProperty("http.proxyPort", port);
